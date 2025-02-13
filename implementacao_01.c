@@ -18,7 +18,6 @@ int main()
     getMetadadosGrafo(file, &num_vertice, &num_aresta);
     int *aresta = (int *)calloc(num_aresta * 2, sizeof(int));
     lerArestas(file, aresta);
-    puts("concluiu lida de arestas");
     fclose(file);
     return 0;
 }
@@ -31,9 +30,8 @@ void getMetadadosGrafo(FILE *ptr, int *n, int *m)
 void lerArestas(FILE *ptr, int *aresta)
 {
     int i = 0;
-    while (fscanf(ptr, "%d %d", aresta[i], aresta[i + 1]) == 2)
+    while (fscanf(ptr, "%d %d", (aresta+i), (aresta+ i + 1)) == 2)
     {
-        printf("Aresta: %d - %d", aresta[i], aresta[i + 1]);
         i += 2;
     }
 }
